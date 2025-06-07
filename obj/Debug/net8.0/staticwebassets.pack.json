@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\jpath\\Intership_Fidrox\\VisitorAPI\\wwwroot\\blacklist.html",
+      "PackagePath": "staticwebassets\\blacklist.html"
+    },
+    {
+      "Id": "D:\\jpath\\Intership_Fidrox\\VisitorAPI\\wwwroot\\manage_identity.html",
+      "PackagePath": "staticwebassets\\manage_identity.html"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.VisitorAPI.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.VisitorAPI.props",
+      "PackagePath": "build\\VisitorAPI.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.VisitorAPI.props",
+      "PackagePath": "buildMultiTargeting\\VisitorAPI.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.VisitorAPI.props",
+      "PackagePath": "buildTransitive\\VisitorAPI.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -1,0 +1,58 @@
+{
+  "Version": 1,
+  "Hash": "ztDcEczLGZDPYAnV4gYyDWy/QCmy6tccQf0CMUjPiZg=",
+  "Source": "VisitorAPI",
+  "BasePath": "_content/VisitorAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "VisitorAPI\\wwwroot",
+      "Source": "VisitorAPI",
+      "ContentRoot": "D:\\jpath\\Intership_Fidrox\\VisitorAPI\\wwwroot\\",
+      "BasePath": "_content/VisitorAPI",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "D:\\jpath\\Intership_Fidrox\\VisitorAPI\\wwwroot\\blacklist.html",
+      "SourceId": "VisitorAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\jpath\\Intership_Fidrox\\VisitorAPI\\wwwroot\\",
+      "BasePath": "_content/VisitorAPI",
+      "RelativePath": "blacklist.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\blacklist.html"
+    },
+    {
+      "Identity": "D:\\jpath\\Intership_Fidrox\\VisitorAPI\\wwwroot\\manage_identity.html",
+      "SourceId": "VisitorAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\jpath\\Intership_Fidrox\\VisitorAPI\\wwwroot\\",
+      "BasePath": "_content/VisitorAPI",
+      "RelativePath": "manage_identity.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\manage_identity.html"
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+<!-- manage_identity.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manage Identity</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 1200px;
+      background: white;
+      margin: 30px auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    h2 {
+      background-color: #002366;
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .col {
+      flex: 1;
+      min-width: 220px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    select, input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+    th {
+      background-color: #002366;
+      color: white;
+    }
+
+    .image-upload {
+      margin-top: 20px;
+    }
+
+    #preview {
+      margin-top: 10px;
+      max-height: 200px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Manage Identity</h2>
+
+  <div class="row">
+    <div class="col">
+      <label>Company</label>
+      <select>
+        <option>Fidrox Technologies</option>
+      </select>
+    </div>
+    <div class="col">
+      <label>Location</label>
+      <select>
+        <option>Las Vegas</option>
+      </select>
+    </div>
+    <div class="col">
+      <label>Identity Type</label>
+      <select>
+        <option>Employee</option>
+      </select>
+    </div>
+    <div class="col">
+      <label>Status</label>
+      <select>
+        <option>Pending Onboard</option>
+      </select>
+    </div>
+  </div>
+
+  <input type="text" placeholder="Search Here" style="width: 100%; padding: 10px; margin-top: 10px;">
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Identity Number</th>
+        <th>Mobile Number</th>
+        <th>Hire Date</th>
+        <th>Separation Date</th>
+        <th>Department</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="image-upload">
+    <label><strong>Upload ID Image:</strong></label>
+    <input type="file" accept="image/*" onchange="showPreview(event)">
+    <br>
+    <img id="preview" src="" alt="Preview" />
+  </div>
+</div>
+
+<script>
+  function showPreview(event) {
+    const reader = new FileReader();
+    reader.onload = function(){
+      document.getElementById('preview').src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+  }
+</script>
+
+</body>
+</html>
