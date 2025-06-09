@@ -213,6 +213,7 @@ D:\jpath\Intership_Fidrox\VisitorAPI\obj\Debug\net8.0\VisitorAPI.AssemblyInfo.cs
 D:\jpath\Intership_Fidrox\VisitorAPI\obj\Debug\net8.0\VisitorAPI.csproj.CoreCompileInputs.cache
 D:\jpath\Intership_Fidrox\VisitorAPI\obj\Debug\net8.0\VisitorAPI.MvcApplicationPartsAssemblyInfo.cs
 D:\jpath\Intership_Fidrox\VisitorAPI\obj\Debug\net8.0\VisitorAPI.MvcApplicationPartsAssemblyInfo.cache
+D:\jpath\Intership_Fidrox\VisitorAPI\obj\Debug\net8.0\VisitorAPI.sourcelink.json
 D:\jpath\Intership_Fidrox\VisitorAPI\obj\Debug\net8.0\staticwebassets.build.json
 D:\jpath\Intership_Fidrox\VisitorAPI\obj\Debug\net8.0\staticwebassets.development.json
 D:\jpath\Intership_Fidrox\VisitorAPI\obj\Debug\net8.0\staticwebassets\msbuild.VisitorAPI.Microsoft.AspNetCore.StaticWebAssets.props

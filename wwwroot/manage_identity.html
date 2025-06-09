@@ -1,9 +1,12 @@
 <!-- manage_identity.html -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Manage Identity</title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -11,49 +14,60 @@
       margin: 0;
       padding: 0;
     }
+
     .container {
       max-width: 1200px;
       background: white;
       margin: 30px auto;
       padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     }
+
     h2 {
       background-color: #002366;
       color: white;
       padding: 10px;
       border-radius: 5px;
     }
+
     .row {
       display: flex;
       gap: 20px;
       flex-wrap: wrap;
       margin-top: 20px;
     }
+
     .col {
       flex: 1;
       min-width: 220px;
     }
+
     label {
       display: block;
       margin-bottom: 5px;
       font-weight: bold;
     }
-    select, input[type="text"] {
+
+    select,
+    input[type="text"] {
       width: 100%;
       padding: 8px;
       margin-bottom: 10px;
     }
+
     table {
       width: 100%;
       border-collapse: collapse;
       margin-top: 20px;
     }
-    th, td {
+
+    th,
+    td {
       padding: 10px;
       border: 1px solid #ccc;
     }
+
     th {
       background-color: #002366;
       color: white;
@@ -67,82 +81,442 @@
       margin-top: 10px;
       max-height: 200px;
     }
+
+    /* Button container */
+    .btn-group {
+      margin: 20px 0;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-group button {
+      background-color: #002366;
+      border: none;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-new {
+      background-color: #28a745 !important;
+      /* green */
+      color: white !important;
+    }
+
+    .btn-new:hover {
+      background-color: #218838 !important;
+    }
+
+    .btn-edit {
+      background-color: #ffc107 !important;
+      /* yellow */
+      color: #212529 !important;
+    }
+
+    .btn-edit:hover {
+      background-color: #e0a800 !important;
+      color: #212529 !important;
+    }
+
+    .btn-save {
+      background-color: #007bff !important;
+      /* blue */
+      color: white !important;
+    }
+
+    .btn-save:hover {
+      background-color: #0056b3 !important;
+    }
+
+    .btn-cancel {
+      background-color: #6c757d !important;
+      /* grey */
+      color: white !important;
+    }
+
+    .btn-cancel:hover {
+      background-color: #5a6268 !important;
+    }
+
+    .btn-terminate {
+      background-color: #dc3545 !important;
+      /* red */
+      color: white !important;
+    }
+
+    .btn-terminate:hover {
+      background-color: #bd2130 !important;
+    }
   </style>
 </head>
+
 <body>
+  <div class="container">
+    <h2>Manage Identity</h2>
 
-<div class="container">
-  <h2>Manage Identity</h2>
+    <div class="row">
+      <div class="col">
+        <label>Company</label>
+        <select>
+          <option>Fidrox Technologies</option>
+          <option>TCS</option>
+          <option>IBM</option>
+          <option>Cognizant</option>
+        </select>
+      </div>
+      <div class="col">
+        <label>Location</label>
+        <select>
+          <option>Bengaluru</option>
+          <option>Hyderabad</option>
+          <option>Chennai</option>
+        </select>
+      </div>
+      <div class="col">
+        <label>Identity Type</label>
+        <select>
+          <option>Employee</option>
+          <option>Contractor</option>
+          <option>Intern</option>
+          <option>Visitor</option>
+          <option>Vendor</option>
+          <option>Admin</option>
+          <option>Guest</option>
+        </select>
+      </div>
+      <div class="col">
+        <label>Status</label>
+        <select>
+          <option>Pending Onboard</option>
+          <option>Active</option>
+          <option>Terminated</option>
+          <option>On Leave</option>
+        </select>
+      </div>
+    </div>
 
-  <div class="row">
-    <div class="col">
-      <label>Company</label>
-      <select>
-        <option>Fidrox Technologies</option>
-      </select>
+    <input type="text" id="searchInput" placeholder="Search Here"
+      style="width: 100%; padding: 10px; margin-top: 10px;" />
+
+    <table id="employeeTable">
+      <thead>
+        <tr>
+          <th>Select</th> <!-- new checkbox column -->
+          <th>Name</th>
+          <th>Identity Number</th>
+          <th>Mobile Number</th>
+          <th>Hire Date</th>
+          <th>Separation Date</th>
+          <th>Department</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Rows inserted dynamically -->
+      </tbody>
+    </table>
+
+
+    <!-- Buttons above upload image -->
+    <div class="btn-group">
+      <button class="btn-new" title="New"><i class="fas fa-plus"></i> New</button>
+      <button class="btn-edit" title="Edit"><i class="fas fa-edit"></i> Edit</button>
+      <button class="btn-save" title="Save"><i class="fas fa-save"></i> Save</button>
+      <button class="btn-cancel" title="Cancel"><i class="fas fa-times"></i>
+        Cancel</button>
+      <button class="btn-terminate" title="Terminate"><i class="fas
+            fa-user-slash"></i> Terminate</button>
     </div>
-    <div class="col">
-      <label>Location</label>
-      <select>
-        <option>Las Vegas</option>
-      </select>
+
+
+
+    <div class="image-upload">
+      <label><strong>Upload ID Image:</strong></label>
+      <input type="file" accept="image/*" onchange="showPreview(event)" />
+      <br />
+      <img id="preview" src="" alt="Preview" />
     </div>
-    <div class="col">
-      <label>Identity Type</label>
-      <select>
-        <option>Employee</option>
-      </select>
+
+    <div id="employeeModal" style="
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+">
+      <h3 id="modalTitle" style="margin-top: 0; text-align: center;">Add New Employee</h3>
+      <form id="employeeForm" style="display: flex; flex-direction: column; gap: 10px;">
+
+        <label for="name">Name</label>
+        <input type="text" id="name" required />
+
+        <label for="identityNumber">Identity Number</label>
+        <input type="text" id="identityNumber" required />
+
+        <label for="mobileNumber">Mobile Number</label>
+        <input type="text" id="mobileNumber" required />
+
+        <label for="hireDate">Hire Date</label>
+        <input type="date" id="hireDate" required />
+
+        <label for="separationDate">Separation Date</label>
+        <input type="date" id="separationDate" />
+
+        <label for="department">Department</label>
+        <input type="text" id="department" required />
+
+        <label for="identityType">Identity Type</label>
+        <input type="text" name="identityType" id="identityType" required />
+
+        <label for="status">Status</label>
+        <select name="status" id="status" required>
+          <option value="Active">Active</option>
+          <option value="Inactive">Inactive</option>
+        </select>
+
+        <label for="idImagePath">ID Image Path</label>
+        <input type="text" name="idImagePath" id="idImagePath" placeholder="e.g. uploads/john.jpg" required />
+
+        <div style="margin-top: 15px; text-align: right;">
+          <button type="submit">Save</button>
+          <button type="button" id="modalCancelBtn">Cancel</button>
+        </div>
+      </form>
     </div>
-    <div class="col">
-      <label>Status</label>
-      <select>
-        <option>Pending Onboard</option>
-      </select>
-    </div>
+
+
+    <div id="modalBackdrop" style="display:none; position:fixed; inset:0;
+        background:rgba(0,0,0,0.5); z-index:999;"></div>
+
   </div>
 
-  <input type="text" placeholder="Search Here" style="width: 100%; padding: 10px; margin-top: 10px;">
+  <script>
+    const apiUrl = 'manage_identity.html/api/employees'; // Your backend API URL
+    let employees = []; // will hold employees data from API
+    let editingEmployeeId = null; // track editing employee id
 
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Identity Number</th>
-        <th>Mobile Number</th>
-        <th>Hire Date</th>
-        <th>Separation Date</th>
-        <th>Department</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+    const tbody = document.querySelector('#employeeTable tbody');
+    const modal = document.getElementById('employeeModal');
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    const form = document.getElementById('employeeForm');
+    const modalTitle = document.getElementById('modalTitle');
 
-  <div class="image-upload">
-    <label><strong>Upload ID Image:</strong></label>
-    <input type="file" accept="image/*" onchange="showPreview(event)">
-    <br>
-    <img id="preview" src="" alt="Preview" />
-  </div>
-</div>
+    function fetchEmployees() {
+      fetch(apiUrl)
+        .then(res => res.json())
+        .then(data => {
+          employees = data;
+          renderTable();
+        })
+        .catch(err => console.error(err));
+    }
 
-<script>
-  function showPreview(event) {
-    const reader = new FileReader();
-    reader.onload = function(){
-      document.getElementById('preview').src = reader.result;
-    };
-    reader.readAsDataURL(event.target.files[0]);
-  }
-</script>
+    function renderTable() {
+      tbody.innerHTML = '';
+      employees.forEach(emp => {
+        const tr = document.createElement('tr');
+        tr.dataset.id = emp.id;
 
+        tr.innerHTML = `
+      <td><input type="checkbox" class="select-row" /></td>
+      <td>${emp.name ?? ''}</td>
+      <td>${emp.identityNumber ?? ''}</td>
+      <td>${emp.mobileNumber ?? ''}</td>
+      <td>${emp.hireDate ? new Date(emp.hireDate).toLocaleDateString() : ''}</td>
+      <td>${emp.separationDate ? new Date(emp.separationDate).toLocaleDateString() : ''}</td>
+      <td>${emp.department ?? ''}</td>
+    `;
+
+        tbody.appendChild(tr);
+      });
+    }
+
+    // Show modal popup with optional employee data to edit
+    function openModal(employee = null) {
+      modal.style.display = 'block';
+      modalBackdrop.style.display = 'block';
+
+      if (employee) {
+        modalTitle.textContent = 'Edit Employee';
+        editingEmployeeId = employee.id;
+
+        form.name.value = employee.name;
+        form.identityNumber.value = employee.identityNumber;
+        form.mobileNumber.value = employee.mobileNumber;
+        form.hireDate.value = employee.hireDate ? employee.hireDate.split('T')[0] : '';
+        form.separationDate.value = employee.separationDate ? employee.separationDate.split('T')[0] : '';
+        form.department.value = employee.department;
+      } else {
+        modalTitle.textContent = 'Add New Employee';
+        editingEmployeeId = null;
+
+        form.reset();
+      }
+
+      if (!employee) {
+        modalTitle.textContent = 'Add New Employee';
+        editingEmployeeId = null;
+        form.reset();
+        form.status.value = 'Active'; // default status
+        form.identityType.value = 'Employee'; // default identity type
+      }
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+      modalBackdrop.style.display = 'none';
+      editingEmployeeId = null;
+    }
+
+    // Get the selected row's employee id, return first checked or null
+    function getSelectedEmployeeId() {
+      const checkedBoxes = document.querySelectorAll('.select-row:checked');
+      if (checkedBoxes.length === 0) return null;
+      const tr = checkedBoxes[0].closest('tr');
+      return tr.dataset.id;
+    }
+
+    // Event Listeners for buttons
+
+    // New button
+    document.querySelector('.btn-new').addEventListener('click', () => {
+      openModal();
+    });
+
+    // Edit button
+    document.querySelector('.btn-edit').addEventListener('click', () => {
+      const selectedId = getSelectedEmployeeId();
+      if (!selectedId) {
+        alert('Please select a row to edit.');
+        return;
+      }
+      const emp = employees.find(e => e.id == selectedId);
+      if (!emp) return;
+      openModal(emp);
+    });
+
+    // Cancel button (cancel editing or adding)
+    document.querySelector('.btn-cancel').addEventListener('click', () => {
+      // Uncheck all checkboxes, reload data to reset any changes
+      document.querySelectorAll('.select-row').forEach(cb => cb.checked = false);
+      fetchEmployees();
+    });
+
+    // Terminate button (delete selected employee)
+    document.querySelector('.btn-terminate').addEventListener('click', () => {
+      const selectedId = getSelectedEmployeeId();
+      if (!selectedId) {
+        alert('Please select a row to terminate (delete).');
+        return;
+      }
+      if (!confirm('Are you sure you want to terminate (delete) this employee?')) return;
+
+      fetch(`${apiUrl}/${selectedId}`, {
+        method: 'DELETE',
+      })
+        .then(res => {
+          if (!res.ok) throw new Error('Failed to delete');
+          alert('Employee terminated successfully.');
+          fetchEmployees();
+        })
+        .catch(err => alert(err.message));
+    });
+
+    // Save button (save changes)
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const data = {
+        id: editingEmployeeId,  // <-- add this line
+        name: form.name.value.trim(),
+        identityNumber: form.identityNumber.value.trim(),
+        mobileNumber: form.mobileNumber.value.trim(),
+        hireDate: form.hireDate.value,
+        separationDate: form.separationDate.value || null,
+        department: form.department.value.trim(),
+        identityType: form.identityType.value.trim(),
+        status: form.status.value,
+        idImagePath: form.idImagePath.value.trim()
+      };
+
+      if (editingEmployeeId) {
+        // Update existing employee
+        fetch(`${apiUrl}/${editingEmployeeId}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        })
+          .then(res => {
+            if (!res.ok) throw new Error('Failed to update employee');
+            alert('Employee updated successfully');
+            closeModal();
+            fetchEmployees();
+          })
+          .catch(err => alert(err.message));
+      } else {
+        // Create new employee
+        fetch(apiUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        })
+          .then(res => {
+            if (!res.ok) throw new Error('Failed to add employee');
+            alert('Employee added successfully');
+            closeModal();
+            fetchEmployees();
+          })
+          .catch(err => alert(err.message));
+      }
+    });
+
+
+    // Cancel modal button
+    document.getElementById('modalCancelBtn').addEventListener('click', () => {
+      closeModal();
+    });
+
+    // On page load fetch employees
+    document.addEventListener('DOMContentLoaded', () => {
+      fetchEmployees();
+    });
+
+
+
+    document.getElementById('searchInput').addEventListener('keyup', function () {
+      const filter = this.value.toLowerCase();
+      const rows = document.querySelectorAll('#employeeTable tbody tr');
+
+      rows.forEach(row => {
+        const cellsText = Array.from(row.cells)
+          .map(cell => cell.textContent.toLowerCase())
+          .join(' ');
+
+        if (cellsText.includes(filter)) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    });
+
+  </script>
 </body>
+
 </html>

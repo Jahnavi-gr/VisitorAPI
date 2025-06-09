@@ -11,14 +11,16 @@ namespace VisitorAPI.Data
         }
 
         public DbSet<Visitor> Visitors { get; set; }
+        public DbSet<Employee> Employees { get; set; }
 
-         // Override OnModelCreating to configure model
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // Visitor table mapping
+            modelBuilder.Entity<Visitor>().ToTable("visitors");
             modelBuilder.Entity<Visitor>()
                 .Property(v => v.IsBlacklisted)
                 .HasColumnName("is_blacklisted");
-            
+
             modelBuilder.Entity<Visitor>()
                 .Property(v => v.VisitDate)
                 .HasColumnName("visit_date");
@@ -29,7 +31,11 @@ namespace VisitorAPI.Data
 
             modelBuilder.Entity<Visitor>()
                 .Property(v => v.Reason)
-                .HasColumnName("reason");    
+                .HasColumnName("reason");
+
+            // Employee table mapping (optional - if needed to rename columns or map table name)
+            modelBuilder.Entity<Employee>().ToTable("employees");
+            // You can configure employee fields here if needed
         }
     }
 }
